@@ -1,0 +1,31 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v4
+
+    - name: Configurar Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Dar permisos a Gradle
+      run: chmod +x gradlew
+
+    - name: Compilar APK de Depuración (Debug)
+      run: ./gradlew assembleDebug
+
+    - name: Subir el APK final como resultado
+      uses: actions/upload-artifact@v4
+      with:
+        name: mi-aplicacion-apk
+        path: app/build/outputs/apk/debug/*.apk
