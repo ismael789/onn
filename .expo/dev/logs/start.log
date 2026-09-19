@@ -1,0 +1,397 @@
+{"_e":"root:init","_t":1789808511014,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1789808511015,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1789808511017,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1789808515459,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1789808518770,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1789808520943,"plugins":[]}
+{"_e":"metro:instantiate","_t":1789808529129,"atlas":false,"workers":12,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1789808545982,"id":"1","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789808545983,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808545986,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808552084,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1789808552199,"id":"1","progress":0.010000000000000002,"total":3,"current":1}
+{"_e":"metro:bundling:progress","_t":1789808552411,"id":"1","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1789808552516,"id":"1","progress":0.07111111111111111,"total":15,"current":4}
+{"_e":"metro:bundling:progress","_t":1789808553318,"id":"1","progress":0.1111111111111111,"total":15,"current":5}
+{"_e":"metro:bundling:progress","_t":1789808553417,"id":"1","progress":0.1799816345270891,"total":33,"current":14}
+{"_e":"metro:bundling:progress","_t":1789808553535,"id":"1","progress":0.1799816345270891,"total":75,"current":22}
+{"_e":"metro:bundling:progress","_t":1789808553635,"id":"1","progress":0.1799816345270891,"total":83,"current":27}
+{"_e":"metro:bundling:progress","_t":1789808553737,"id":"1","progress":0.1799816345270891,"total":99,"current":38}
+{"_e":"metro:bundling:progress","_t":1789808553837,"id":"1","progress":0.2327639273622653,"total":114,"current":55}
+{"_e":"metro:bundling:progress","_t":1789808553940,"id":"1","progress":0.3697954711468225,"total":148,"current":90}
+{"_e":"metro:bundling:progress","_t":1789808554040,"id":"1","progress":0.3697954711468225,"total":196,"current":117}
+{"_e":"metro:bundling:progress","_t":1789808554143,"id":"1","progress":0.37749569089342144,"total":236,"current":145}
+{"_e":"metro:bundling:progress","_t":1789808554240,"id":"1","progress":0.37749569089342144,"total":285,"current":165}
+{"_e":"metro:bundling:progress","_t":1789808554340,"id":"1","progress":0.37749569089342144,"total":308,"current":183}
+{"_e":"metro:bundling:progress","_t":1789808554445,"id":"1","progress":0.37749569089342144,"total":308,"current":184}
+{"_e":"metro:bundling:progress","_t":1789808554519,"id":"1","progress":0.37749569089342144,"total":308,"current":185}
+{"_e":"metro:bundling:progress","_t":1789808554620,"id":"1","progress":0.37749569089342144,"total":395,"current":187}
+{"_e":"metro:bundling:progress","_t":1789808555059,"id":"1","progress":0.37749569089342144,"total":395,"current":188}
+{"_e":"metro:bundling:progress","_t":1789808555160,"id":"1","progress":0.37749569089342144,"total":432,"current":240}
+{"_e":"metro:bundling:progress","_t":1789808555262,"id":"1","progress":0.37749569089342144,"total":461,"current":270}
+{"_e":"metro:bundling:progress","_t":1789808555365,"id":"1","progress":0.38997692877188755,"total":482,"current":301}
+{"_e":"metro:bundling:progress","_t":1789808555465,"id":"1","progress":0.39340359231119354,"total":507,"current":318}
+{"_e":"metro:bundling:progress","_t":1789808555568,"id":"1","progress":0.3986406566586026,"total":529,"current":334}
+{"_e":"metro:bundling:progress","_t":1789808555669,"id":"1","progress":0.43338314969550146,"total":559,"current":368}
+{"_e":"metro:bundling:progress","_t":1789808555769,"id":"1","progress":0.4710634752267175,"total":593,"current":407}
+{"_e":"metro:bundling:progress","_t":1789808555869,"id":"1","progress":0.5298090027619766,"total":599,"current":436}
+{"_e":"metro:bundling:progress","_t":1789808555969,"id":"1","progress":0.6158947853499648,"total":618,"current":485}
+{"_e":"metro:bundling:progress","_t":1789808556069,"id":"1","progress":0.6488512203072637,"total":653,"current":526}
+{"_e":"metro:bundling:progress","_t":1789808556169,"id":"1","progress":0.6612193645112062,"total":669,"current":544}
+{"_e":"metro:bundling:progress","_t":1789808556273,"id":"1","progress":0.6818938924604868,"total":683,"current":564}
+{"_e":"metro:bundling:progress","_t":1789808556373,"id":"1","progress":0.6818938924604868,"total":713,"current":587}
+{"_e":"metro:bundling:progress","_t":1789808556476,"id":"1","progress":0.6932826806253392,"total":717,"current":597}
+{"_e":"metro:bundling:progress","_t":1789808556579,"id":"1","progress":0.7405118568963739,"total":717,"current":617}
+{"_e":"metro:bundling:progress","_t":1789808556689,"id":"1","progress":0.7429141646679855,"total":717,"current":618}
+{"_e":"metro:bundling:progress","_t":1789808556791,"id":"1","progress":0.7887766174256312,"total":733,"current":651}
+{"_e":"metro:bundling:progress","_t":1789808556890,"id":"1","progress":0.8497758662026575,"total":742,"current":684}
+{"_e":"metro:bundling:progress","_t":1789808556990,"id":"1","progress":0.9038920143758611,"total":751,"current":714}
+{"_e":"metro:bundling:progress","_t":1789808557090,"id":"1","progress":0.9048185603807257,"total":779,"current":741}
+{"_e":"metro:bundling:progress","_t":1789808557190,"id":"1","progress":0.9174850633431687,"total":783,"current":750}
+{"_e":"metro:bundling:progress","_t":1789808557290,"id":"1","progress":0.9700765132193633,"total":796,"current":784}
+{"_e":"metro:bundling:progress","_t":1789808557395,"id":"1","progress":0.9751870710924702,"total":801,"current":791}
+{"_e":"metro:bundling:progress","_t":1789808557522,"id":"1","progress":0.9776543365736649,"total":801,"current":792}
+{"_e":"metro:bundling:progress","_t":1789808557825,"id":"1","progress":0.9801247192569836,"total":801,"current":793}
+{"_e":"metro:bundling:failed","_t":1789808557896,"id":"1","message":"node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewExperimentalNativeComponent.js: C:\\Users\\ismae\\Downloads\\onn-remote2\\node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewExperimentalNativeComponent.js: Unable to determine event arguments for \"onModeChange\"","importStack":null,"filename":null,"targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:started","_t":1789808562390,"id":"2","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789808562390,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808562391,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808562491,"id":"2","progress":0.34309346935896434,"total":519,"current":304}
+{"_e":"metro:bundling:progress","_t":1789808562591,"id":"2","progress":0.9209221927680571,"total":793,"current":761}
+{"_e":"metro:bundling:failed","_t":1789808562614,"id":"2","message":"node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewNativeComponent.js: C:\\Users\\ismae\\Downloads\\onn-remote2\\node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewNativeComponent.js: Unable to determine event arguments for \"onModeChange\"","importStack":null,"filename":null,"targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:started","_t":1789808564166,"id":"3","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789808564166,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808564167,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808564267,"id":"3","progress":0.686450229302925,"total":589,"current":488}
+{"_e":"metro:bundling:failed","_t":1789808564345,"id":"3","message":"node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewExperimentalNativeComponent.js: C:\\Users\\ismae\\Downloads\\onn-remote2\\node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewExperimentalNativeComponent.js: Unable to determine event arguments for \"onModeChange\"","importStack":null,"filename":null,"targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:started","_t":1789808566401,"id":"4","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789808566401,"id":"4","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808566402,"id":"4","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808566505,"id":"4","progress":0.6714504206704607,"total":587,"current":481}
+{"_e":"metro:bundling:failed","_t":1789808566585,"id":"4","message":"node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewNativeComponent.js: C:\\Users\\ismae\\Downloads\\onn-remote2\\node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewNativeComponent.js: Unable to determine event arguments for \"onModeChange\"","importStack":null,"filename":null,"targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:started","_t":1789808567982,"id":"5","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789808567982,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808567983,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808568083,"id":"5","progress":0.7051513234355534,"total":599,"current":503}
+{"_e":"metro:bundling:failed","_t":1789808568162,"id":"5","message":"node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewNativeComponent.js: C:\\Users\\ismae\\Downloads\\onn-remote2\\node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewNativeComponent.js: Unable to determine event arguments for \"onModeChange\"","importStack":null,"filename":null,"targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:started","_t":1789808569045,"id":"6","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789808569045,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808569046,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808569147,"id":"6","progress":0.6731750263500528,"total":635,"current":521}
+{"_e":"metro:bundling:failed","_t":1789808569224,"id":"6","message":"node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewNativeComponent.js: C:\\Users\\ismae\\Downloads\\onn-remote2\\node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewNativeComponent.js: Unable to determine event arguments for \"onModeChange\"","importStack":null,"filename":null,"targetModuleName":null,"originModulePath":null}
+{"_e":"metro:bundling:started","_t":1789808569841,"id":"7","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789808569841,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808569842,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789808569942,"id":"7","progress":0.763502686398341,"total":618,"current":540}
+{"_e":"metro:bundling:failed","_t":1789808570019,"id":"7","message":"node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewExperimentalNativeComponent.js: C:\\Users\\ismae\\Downloads\\onn-remote2\\node_modules\\react-native\\src\\private\\components\\virtualview\\VirtualViewExperimentalNativeComponent.js: Unable to determine event arguments for \"onModeChange\"","importStack":null,"filename":null,"targetModuleName":null,"originModulePath":null}
+{"_e":"root:init","_t":1789808749534,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1789808749535,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1789808749538,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1789808752639,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1789808762504,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1789808766614,"plugins":[]}
+{"_e":"metro:instantiate","_t":1789808774704,"atlas":false,"workers":12,"host":"::","port":8081}
+{"_e":"root:init","_t":1789809037266,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1789809037267,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1789809037270,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1789809037579,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1789809037910,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1789809038102,"plugins":[]}
+{"_e":"metro:instantiate","_t":1789809042230,"atlas":false,"workers":12,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1789809053069,"id":"1","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789809053070,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789809053072,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789809053647,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1789809053747,"id":"1","progress":0.010000000000000002,"total":3,"current":1}
+{"_e":"metro:bundling:progress","_t":1789809053905,"id":"1","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1789809054016,"id":"1","progress":0.04000000000000001,"total":9,"current":2}
+{"_e":"metro:bundling:progress","_t":1789809054020,"id":"1","progress":0.09,"total":9,"current":3}
+{"_e":"metro:bundling:progress","_t":1789809054125,"id":"1","progress":0.09,"total":109,"current":5}
+{"_e":"metro:bundling:progress","_t":1789809054228,"id":"1","progress":0.09,"total":113,"current":9}
+{"_e":"metro:bundling:progress","_t":1789809054328,"id":"1","progress":0.09,"total":122,"current":16}
+{"_e":"metro:bundling:progress","_t":1789809054439,"id":"1","progress":0.09,"total":131,"current":20}
+{"_e":"metro:bundling:progress","_t":1789809054548,"id":"1","progress":0.09,"total":131,"current":22}
+{"_e":"metro:bundling:progress","_t":1789809054655,"id":"1","progress":0.09,"total":146,"current":24}
+{"_e":"metro:bundling:progress","_t":1789809054777,"id":"1","progress":0.09,"total":152,"current":28}
+{"_e":"metro:bundling:progress","_t":1789809054878,"id":"1","progress":0.09,"total":154,"current":37}
+{"_e":"metro:bundling:progress","_t":1789809054977,"id":"1","progress":0.09,"total":168,"current":46}
+{"_e":"metro:bundling:progress","_t":1789809055077,"id":"1","progress":0.09559149571751965,"total":207,"current":64}
+{"_e":"metro:bundling:progress","_t":1789809055178,"id":"1","progress":0.1538532996432818,"total":232,"current":91}
+{"_e":"metro:bundling:progress","_t":1789809055278,"id":"1","progress":0.2444135841434162,"total":267,"current":132}
+{"_e":"metro:bundling:progress","_t":1789809055379,"id":"1","progress":0.25983513240006745,"total":308,"current":157}
+{"_e":"metro:bundling:progress","_t":1789809055479,"id":"1","progress":0.25983513240006745,"total":403,"current":196}
+{"_e":"metro:bundling:progress","_t":1789809055579,"id":"1","progress":0.28298513375450896,"total":438,"current":233}
+{"_e":"metro:bundling:progress","_t":1789809055679,"id":"1","progress":0.3185221683950708,"total":466,"current":263}
+{"_e":"metro:bundling:progress","_t":1789809055780,"id":"1","progress":0.36888855433023454,"total":489,"current":297}
+{"_e":"metro:bundling:progress","_t":1789809055881,"id":"1","progress":0.46771458722812226,"total":503,"current":344}
+{"_e":"metro:bundling:progress","_t":1789809055981,"id":"1","progress":0.6243688380187321,"total":529,"current":418}
+{"_e":"metro:bundling:progress","_t":1789809056081,"id":"1","progress":0.7280541115311909,"total":552,"current":471}
+{"_e":"metro:bundling:progress","_t":1789809056181,"id":"1","progress":0.7917983338121228,"total":590,"current":525}
+{"_e":"metro:bundling:progress","_t":1789809056281,"id":"1","progress":0.8466351601016647,"total":626,"current":576}
+{"_e":"metro:bundling:progress","_t":1789809056382,"id":"1","progress":0.8670174620818243,"total":668,"current":622}
+{"_e":"metro:bundling:progress","_t":1789809056484,"id":"1","progress":0.8758036059904025,"total":717,"current":671}
+{"_e":"metro:bundling:progress","_t":1789809056585,"id":"1","progress":0.8837502061166558,"total":751,"current":706}
+{"_e":"metro:bundling:progress","_t":1789809056685,"id":"1","progress":0.9511956317714559,"total":769,"current":750}
+{"_e":"metro:bundling:progress","_t":1789809056787,"id":"1","progress":0.9948387182928377,"total":774,"current":772}
+{"_e":"metro:bundling:progress","_t":1789809057272,"id":"1","progress":0.9974176899091266,"total":774,"current":773}
+{"_e":"metro:bundling:progress","_t":1789809057386,"id":"1","progress":0.9974276537983101,"total":777,"current":776}
+{"_e":"metro:bundling:progress","_t":1789809057435,"id":"1","progress":0.999,"total":777,"current":777}
+{"_e":"metro:bundling:progress","_t":1789809057536,"id":"1","progress":0.999,"total":787,"current":784}
+{"_e":"metro:bundling:progress","_t":1789809057636,"id":"1","progress":0.999,"total":788,"current":788}
+{"_e":"metro:bundling:done","_t":1789809057777,"id":"1","total":788,"ms":4707.1862}
+{"_e":"metro:client_log","_t":1789809062561,"level":"warn","data":["SafeAreaView has been deprecated and will be removed in a future release. Please use 'react-native-safe-area-context' instead. See https://github.com/AppAndFlow/react-native-safe-area-context"]}
+{"_e":"metro:client_log","_t":1789809063174,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809063776,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809069629,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809075328,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809081612,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809085442,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809087797,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809101337,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809104154,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809104373,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809104506,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809106066,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809115093,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809121133,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809126068,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809240364,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809395876,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809408405,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809412607,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809417031,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809425404,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809440689,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809468458,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809475492,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809480628,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809482458,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809486785,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809490378,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809490436,"level":"log","data":["Mi IP es:","192.168.1.66"]}
+{"_e":"metro:client_log","_t":1789809495158,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809495235,"level":"log","data":["Mi IP es:","192.168.1.66"]}
+{"_e":"metro:client_log","_t":1789809502838,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809507740,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809515601,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809517714,"level":"warn","data":["TV rejected command:","Up","403"]}
+{"_e":"metro:client_log","_t":1789809518477,"level":"warn","data":["TV rejected command:","Up","403"]}
+{"_e":"metro:client_log","_t":1789809518811,"level":"warn","data":["TV rejected command:","Up","403"]}
+{"_e":"metro:client_log","_t":1789809519041,"level":"warn","data":["TV rejected command:","Up","403"]}
+{"_e":"metro:client_log","_t":1789809520708,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809521265,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809521419,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809521565,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809522055,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809522197,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809522580,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809522703,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:bundling:started","_t":1789809529330,"id":"q","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789809529330,"id":"q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1789809529352,"id":"q","total":1,"ms":21.4681}
+{"_e":"metro:client_log","_t":1789809533086,"level":"warn","data":["SafeAreaView has been deprecated and will be removed in a future release. Please use 'react-native-safe-area-context' instead. See https://github.com/AppAndFlow/react-native-safe-area-context"]}
+{"_e":"metro:client_log","_t":1789809533793,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809534493,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809534845,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809535997,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809536734,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809537107,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809537286,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809537865,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809538029,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809538385,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809538591,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809539184,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809539508,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809539726,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809540248,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809540971,"level":"warn","data":["TV rejected command:","Up","403"]}
+{"_e":"metro:client_log","_t":1789809541161,"level":"warn","data":["TV rejected command:","Up","403"]}
+{"_e":"metro:client_log","_t":1789809541566,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809541636,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809542006,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809542146,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809542316,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809542469,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809542802,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809542970,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809543137,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809543304,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809543883,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809544283,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809544472,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809544893,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809545069,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809598885,"level":"warn","data":["TV rejected command:","VolumeMute","403"]}
+{"_e":"metro:client_log","_t":1789809601377,"level":"warn","data":["TV rejected command:","VolumeMute","403"]}
+{"_e":"metro:client_log","_t":1789809802093,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809803498,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809803954,"level":"warn","data":["TV rejected command:","Left","403"]}
+{"_e":"metro:client_log","_t":1789809804477,"level":"warn","data":["TV rejected command:","Up","403"]}
+{"_e":"metro:client_log","_t":1789809804696,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809806308,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809806484,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809806810,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809806997,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:bundling:started","_t":1789809812914,"id":"16","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789809812915,"id":"16","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1789809812935,"id":"16","total":1,"ms":20.3092}
+{"_e":"metro:client_log","_t":1789809816704,"level":"warn","data":["SafeAreaView has been deprecated and will be removed in a future release. Please use 'react-native-safe-area-context' instead. See https://github.com/AppAndFlow/react-native-safe-area-context"]}
+{"_e":"metro:client_log","_t":1789809817350,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809818051,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809818477,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809819637,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809820520,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809820796,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809820975,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809821475,"level":"warn","data":["TV rejected command:","Left","403"]}
+{"_e":"metro:client_log","_t":1789809821796,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789809892889,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809897352,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809899840,"level":"warn","data":["\"keyboard-outline\" is not a valid icon name for family \"ionicons\""]}
+{"_e":"metro:client_log","_t":1789809907536,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809907913,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809908087,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809908230,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809908365,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809908500,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809908621,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809908756,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809908879,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809909011,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809909145,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809912543,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"root:init","_t":1789809931682,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1789809931683,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1789809931685,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1789809931994,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1789809932331,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1789809932533,"plugins":[]}
+{"_e":"metro:instantiate","_t":1789809936647,"atlas":false,"workers":12,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1789809973077,"id":"3","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789809973078,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1789809973107,"id":"3","total":1,"ms":29.9978}
+{"_e":"metro:client_log","_t":1789809979291,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809980016,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789809980873,"level":"warn","data":["TV rejected command:","Left","403"]}
+{"_e":"metro:client_log","_t":1789809981449,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789809982826,"level":"warn","data":["TV rejected command:","VolumeMute","403"]}
+{"_e":"metro:client_log","_t":1789809986538,"level":"warn","data":["TV rejected command:","InstantReplay","403"]}
+{"_e":"metro:client_log","_t":1789809987436,"level":"warn","data":["TV rejected command:","InstantReplay","403"]}
+{"_e":"metro:client_log","_t":1789809987891,"level":"warn","data":["TV rejected command:","Back","403"]}
+{"_e":"metro:client_log","_t":1789809989149,"level":"warn","data":["TV rejected command:","Home","403"]}
+{"_e":"metro:client_log","_t":1789809989690,"level":"warn","data":["TV rejected command:","Rev","403"]}
+{"_e":"metro:client_log","_t":1789809989890,"level":"warn","data":["TV rejected command:","Search","403"]}
+{"_e":"metro:client_log","_t":1789809990135,"level":"warn","data":["TV rejected command:","Play","403"]}
+{"_e":"metro:client_log","_t":1789809990290,"level":"warn","data":["TV rejected command:","Info","403"]}
+{"_e":"metro:client_log","_t":1789809990565,"level":"warn","data":["TV rejected command:","Fwd","403"]}
+{"_e":"metro:client_log","_t":1789810007304,"level":"warn","data":["TV rejected command:","Lit_1","403"]}
+{"_e":"metro:client_log","_t":1789810007579,"level":"warn","data":["TV rejected command:","Lit_1","403"]}
+{"_e":"metro:client_log","_t":1789810008195,"level":"warn","data":["TV rejected command:","Lit_3","403"]}
+{"_e":"metro:client_log","_t":1789810008360,"level":"warn","data":["TV rejected command:","Lit_3","403"]}
+{"_e":"metro:client_log","_t":1789810010954,"level":"warn","data":["TV rejected command:","Enter","403"]}
+{"_e":"metro:client_log","_t":1789810011829,"level":"warn","data":["TV rejected command:","Enter","403"]}
+{"_e":"metro:client_log","_t":1789810012115,"level":"warn","data":["TV rejected command:","ChannelDown","403"]}
+{"_e":"metro:client_log","_t":1789810012326,"level":"warn","data":["TV rejected command:","ChannelDown","403"]}
+{"_e":"metro:client_log","_t":1789810012526,"level":"warn","data":["TV rejected command:","ChannelDown","403"]}
+{"_e":"metro:client_log","_t":1789810012717,"level":"warn","data":["TV rejected command:","ChannelDown","403"]}
+{"_e":"metro:client_log","_t":1789810012927,"level":"warn","data":["TV rejected command:","ChannelDown","403"]}
+{"_e":"metro:client_log","_t":1789810013152,"level":"warn","data":["TV rejected command:","ChannelUp","403"]}
+{"_e":"metro:client_log","_t":1789810013315,"level":"warn","data":["TV rejected command:","ChannelUp","403"]}
+{"_e":"metro:client_log","_t":1789810013451,"level":"warn","data":["TV rejected command:","ChannelUp","403"]}
+{"_e":"metro:client_log","_t":1789810013605,"level":"warn","data":["TV rejected command:","ChannelUp","403"]}
+{"_e":"metro:client_log","_t":1789810013804,"level":"warn","data":["TV rejected command:","ChannelDown","403"]}
+{"_e":"metro:client_log","_t":1789810014006,"level":"warn","data":["TV rejected command:","ChannelDown","403"]}
+{"_e":"metro:client_log","_t":1789810014184,"level":"warn","data":["TV rejected command:","ChannelDown","403"]}
+{"_e":"metro:client_log","_t":1789810014349,"level":"warn","data":["TV rejected command:","ChannelDown","403"]}
+{"_e":"metro:client_log","_t":1789810019043,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810019463,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789810019713,"level":"warn","data":["TV rejected command:","Left","403"]}
+{"_e":"metro:client_log","_t":1789810020167,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"root:init","_t":1789810185326,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1789810185327,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1789810185330,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1789810185664,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1789810186020,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1789810186228,"plugins":[]}
+{"_e":"metro:instantiate","_t":1789810190501,"atlas":false,"workers":12,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1789810193099,"id":"1","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789810193099,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789810193102,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1789810193202,"id":"1","progress":0.11387153042388526,"total":243,"current":82}
+{"_e":"metro:bundling:progress","_t":1789810193302,"id":"1","progress":0.30616293333441286,"total":497,"current":275}
+{"_e":"metro:bundling:progress","_t":1789810193402,"id":"1","progress":0.8039004153330285,"total":648,"current":581}
+{"_e":"metro:bundling:progress","_t":1789810193502,"id":"1","progress":0.9362818464925233,"total":772,"current":747}
+{"_e":"metro:bundling:done","_t":1789810193572,"id":"1","total":772,"ms":473.5371}
+{"_e":"metro:client_log","_t":1789810199328,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789810199891,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789810200072,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789810200240,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789810200418,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789810208601,"level":"warn","data":["TV rejected command:","InputHDMI4","403"]}
+{"_e":"metro:client_log","_t":1789810209070,"level":"warn","data":["TV rejected command:","InputAV1","403"]}
+{"_e":"metro:client_log","_t":1789810209325,"level":"warn","data":["TV rejected command:","InputHDMI2","403"]}
+{"_e":"metro:client_log","_t":1789810209491,"level":"warn","data":["TV rejected command:","InputHDMI1","403"]}
+{"_e":"metro:client_log","_t":1789810209656,"level":"warn","data":["TV rejected command:","InputTuner","403"]}
+{"_e":"metro:client_log","_t":1789810210003,"level":"warn","data":["TV rejected command:","InputHDMI3","403"]}
+{"_e":"metro:client_log","_t":1789810210445,"level":"warn","data":["TV rejected command:","PowerOff","403"]}
+{"_e":"metro:client_log","_t":1789810211532,"level":"warn","data":["TV rejected command:","PowerOff","403"]}
+{"_e":"metro:client_log","_t":1789810211721,"level":"warn","data":["TV rejected command:","PowerOff","403"]}
+{"_e":"metro:client_log","_t":1789810211876,"level":"warn","data":["TV rejected command:","PowerOff","403"]}
+{"_e":"metro:client_log","_t":1789810213007,"level":"warn","data":["TV rejected command:","PowerOff","403"]}
+{"_e":"metro:client_log","_t":1789810213185,"level":"warn","data":["TV rejected command:","PowerOff","403"]}
+{"_e":"metro:client_log","_t":1789810213352,"level":"warn","data":["TV rejected command:","PowerOff","403"]}
+{"_e":"metro:client_log","_t":1789810213542,"level":"warn","data":["TV rejected command:","PowerOff","403"]}
+{"_e":"metro:client_log","_t":1789810225833,"level":"warn","data":["TV rejected command:","Right","403"]}
+{"_e":"metro:client_log","_t":1789810226555,"level":"warn","data":["TV rejected command:","Up","403"]}
+{"_e":"metro:client_log","_t":1789810226843,"level":"warn","data":["TV rejected command:","Left","403"]}
+{"_e":"metro:client_log","_t":1789810227122,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789810227288,"level":"warn","data":["TV rejected command:","Down","403"]}
+{"_e":"metro:client_log","_t":1789810228165,"level":"warn","data":["TV rejected command:","Home","403"]}
+{"_e":"metro:client_log","_t":1789810228555,"level":"warn","data":["TV rejected command:","Back","403"]}
+{"_e":"metro:client_log","_t":1789810228831,"level":"warn","data":["TV rejected command:","Rev","403"]}
+{"_e":"metro:client_log","_t":1789810229120,"level":"warn","data":["TV rejected command:","Play","403"]}
+{"_e":"metro:client_log","_t":1789810229298,"level":"warn","data":["TV rejected command:","Fwd","403"]}
+{"_e":"metro:client_log","_t":1789810230474,"level":"warn","data":["TV rejected command:","VolumeMute","403"]}
+{"_e":"metro:client_log","_t":1789810231456,"level":"warn","data":["TV rejected command:","VolumeMute","403"]}
+{"_e":"metro:client_log","_t":1789810231829,"level":"warn","data":["TV rejected command:","VolumeMute","403"]}
+{"_e":"metro:client_log","_t":1789810231973,"level":"warn","data":["TV rejected command:","VolumeMute","403"]}
+{"_e":"metro:client_log","_t":1789810232331,"level":"warn","data":["TV rejected command:","InstantReplay","403"]}
+{"_e":"metro:client_log","_t":1789810232463,"level":"warn","data":["TV rejected command:","InstantReplay","403"]}
+{"_e":"metro:client_log","_t":1789810232604,"level":"warn","data":["TV rejected command:","InstantReplay","403"]}
+{"_e":"metro:client_log","_t":1789810232873,"level":"warn","data":["TV rejected command:","Info","403"]}
+{"_e":"metro:client_log","_t":1789810233052,"level":"warn","data":["TV rejected command:","Info","403"]}
+{"_e":"metro:client_log","_t":1789810233284,"level":"warn","data":["TV rejected command:","Info","403"]}
+{"_e":"metro:client_log","_t":1789810306637,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810306833,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810306963,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810307143,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810307286,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810307453,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810307643,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810307887,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810307997,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810308353,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810308699,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810346554,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810346705,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:client_log","_t":1789810346860,"level":"warn","data":["TV rejected command:","Select","403"]}
+{"_e":"metro:bundling:started","_t":1789810696863,"id":"n","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789810696864,"id":"n","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1789810696889,"id":"n","total":1,"ms":25.7976}
+{"_e":"metro:bundling:started","_t":1789810775128,"id":"o","platform":"android","environment":null,"entry":"node_modules\\expo\\AppEntry.js"}
+{"_e":"metro:bundling:progress","_t":1789810775128,"id":"o","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1789810775151,"id":"o","total":1,"ms":23.1121}
+{"_e":"root:init","_t":1789811895783,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1789811895784,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1789811895786,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1789811896115,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1789811896471,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1789811896676,"plugins":[]}
+{"_e":"metro:instantiate","_t":1789811900970,"atlas":false,"workers":12,"host":"::","port":8081}
+{"_e":"root:init","_t":1789812346918,"format":"v0-jsonl","version":"57.0.26"}
+{"_e":"env:mode","_t":1789812346919,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1789812346922,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1789812347238,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1789812347580,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1789812347832,"plugins":[]}
