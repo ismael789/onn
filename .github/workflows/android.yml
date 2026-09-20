@@ -31,12 +31,12 @@ jobs:
       - name: Generar proyecto Android de Expo
         run: npx expo prebuild --platform android --no-install
 
-      - name: Compilar APK de depuración
+      - name: Compilar APK de lanzamiento (Release)
         working-directory: android
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleRelease
 
       - name: Subir APK
         uses: actions/upload-artifact@v4
         with:
           name: onn-remote-apk
-          path: android/app/build/outputs/apk/debug/*.apk
+          path: android/app/build/outputs/apk/release/*.apk
