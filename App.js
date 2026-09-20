@@ -172,7 +172,13 @@ export default function App() {
   // ---------- UI pieces ----------
 
   const ConnectBar = () => (
-    <TouchableOpacity style={styles.connectBar} onPress={() => setConnectModalOpen(true)}>
+    <TouchableOpacity
+      style={styles.connectBar}
+      onPress={() => {
+        setConnectModalOpen(true);
+        scanNetwork();
+      }}
+    >
       <View style={[styles.connectDot, { backgroundColor: connected ? '#22c55e' : '#555' }]} />
       <Text style={styles.connectBarText}>
         {connected ? (tvName || tvIp) : 'Toca para conectar...'}
