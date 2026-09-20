@@ -25,7 +25,18 @@ import {
   Platform,
 } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { hasIrBlaster, transmit } from '@sachinjs/ir-transmit';
+
+// Expo Go no contiene módulos nativos añadidos por el proyecto. Cargarlo de
+// forma protegida evita que la app completa se cierre: WiFi siempre queda
+// disponible y el modo IR solo se habilita en el APK compilado.
+let hasIrBlaster = null;
+let transmit = null;
+try {
+  ({ hasIrBlaster, transmit } = require('@sachinjs/ir-transmit'));
+} catch (_) {
+  hasIrBlaster = null;
+  transmit = null;
+}
 
 // ─── Constantes de color (igual que App.js) ──────────────────────────────────
 const PURPLE      = '#8b5cf6';
@@ -95,6 +106,7 @@ const ROKU_NEC = {
 
 // ─── Función principal de envío IR ───────────────────────────────────────────
 async function sendIR(necKey) {
+  if (!hasIrBlaster || !transmit) return { ok: false, reason: 'no_module' };
   try {
     if (!hasIrBlaster()) return { ok: false, reason: 'no_hardware' };
   } catch (_) {
@@ -139,6 +151,10 @@ export default function LuzInfrarojaScreen() {
         setHwStatus('unavailable');
         return;
       }
+      if (!hasIrBlaster || !transmit) {
+        setHwStatus('unavailable');
+        return;
+      }
       try {
         const has = hasIrBlaster();
         setHwStatus(has ? 'ok' : 'unavailable');
@@ -173,7 +189,9 @@ export default function LuzInfrarojaScreen() {
           Luz infrarroja no disponible
         </Text>
         <Text style={s.unavailableBody}>
-          {Platform.OS !== 'android'
+          {!hasIrBlaster || !transmit
+            ? 'El modo IR requiere instalar el APK generado por GitHub Actions. Expo Go no incluye este módulo nativo.\n\nEl control por WiFi sigue disponible en la pestaña Mando.'
+            : Platform.OS !== 'android'
             ? 'El control por infrarrojo solo está disponible en Android con hardware IR físico.'
             : 'Tu dispositivo Android no tiene emisor infrarrojo (IR blaster).\n\nUsa el control por WiFi, que sigue disponible en la pestaña Mando.'}
         </Text>

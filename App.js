@@ -99,7 +99,7 @@ export default function App() {
       setConnected(false);
       Alert.alert(
         'No se encontró la TV',
-        'Revisa que el teléfono y la TV estén en la misma red WiFi, y que "Control por apps móviles" esté activado en Configuración > Sistema > Configuración avanzada del sistema de la TV.'
+        'No se pudo contactar esa IP. Puedes guardarla e intentarlo después, pero para controlar una Roku por WiFi el teléfono debe tener acceso a la misma red local de la TV y "Control por apps móviles" debe estar activado en la TV.'
       );
     }
   };
@@ -195,19 +195,19 @@ export default function App() {
             placeholderTextColor="#777"
             value={inputIp}
             onChangeText={setInputIp}
-            keyboardType="numeric"
+            keyboardType="decimal-pad"
             autoCapitalize="none"
           />
           
           <TouchableOpacity style={styles.primaryBtn} onPress={connectManual}>
-            <Text style={styles.primaryBtnText}>Conectar manualmente</Text>
+            <Text style={styles.primaryBtnText}>Conectar con esta IP</Text>
           </TouchableOpacity>
 
           <View style={styles.divider} />
 
           <TouchableOpacity style={styles.searchBtn} onPress={scanNetwork}>
             <Ionicons name="search" size={20} color="#fff" />
-            <Text style={styles.searchBtnText}>Buscar TV en mi red WiFi</Text>
+            <Text style={styles.searchBtnText}>Buscar TVs en mi red WiFi</Text>
           </TouchableOpacity>
 
           {scanning && (

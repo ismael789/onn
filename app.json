@@ -9,7 +9,8 @@
       "backgroundColor": "#0f0f14"
     },
     "android": {
-      "package": "com.onnremote.app"
+      "package": "com.onnremote.app",
+      "usesCleartextTraffic": true
     },
     "plugins": [
       "expo-status-bar"
