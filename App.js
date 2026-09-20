@@ -12,6 +12,8 @@ import {
   StatusBar,
   KeyboardAvoidingView,
   Platform,
+  NativeModules,
+  Vibration,
 } from 'react-native';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -27,6 +29,17 @@ const PURPLE_DARK = '#6d28d9';
 const BG = '#0f0f14';
 const PANEL = '#1a1a22';
 const PANEL_2 = '#232330';
+const TAP_VIBRATION_MS = 12;
+
+async function vibrateOnlyInVibrateMode() {
+  try {
+    if (await NativeModules.RingerMode?.isVibrateMode()) {
+      Vibration.vibrate(TAP_VIBRATION_MS);
+    }
+  } catch (_) {
+    // Expo Go no incluye el módulo nativo; en ese caso no hay vibración.
+  }
+}
 
 function fetchWithTimeout(url, options = {}, timeoutMs = 1500) {
   const controller = new AbortController();
@@ -145,6 +158,7 @@ export default function App() {
   };
 
   const sendKey = async (key) => {
+    vibrateOnlyInVibrateMode();
     if (!tvIp) {
       setConnectModalOpen(true);
       return;

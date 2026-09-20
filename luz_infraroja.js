@@ -23,6 +23,8 @@ import {
   ScrollView,
   ActivityIndicator,
   Platform,
+  NativeModules,
+  Vibration,
 } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -45,6 +47,17 @@ const BG          = '#0f0f14';
 const PANEL       = '#1a1a22';
 const PANEL_2     = '#232330';
 const ORANGE      = '#f97316'; // color distintivo para el modo IR
+const TAP_VIBRATION_MS = 12;
+
+async function vibrateOnlyInVibrateMode() {
+  try {
+    if (await NativeModules.RingerMode?.isVibrateMode()) {
+      Vibration.vibrate(TAP_VIBRATION_MS);
+    }
+  } catch (_) {
+    // Expo Go no incluye el módulo nativo; en ese caso no hay vibración.
+  }
+}
 
 // ─── Protocolo NEC → array de pulsos en microsegundos ────────────────────────
 // La mayoría de controles universales y Roku usan el protocolo NEC a 38 kHz.
@@ -165,6 +178,7 @@ export default function LuzInfrarojaScreen() {
   }, []);
 
   const onSend = async (necKey) => {
+    vibrateOnlyInVibrateMode();
     const result = await sendIR(necKey);
     setLastResult(result.ok ? 'ok' : result.reason);
     if (result.ok) setTimeout(() => setLastResult(null), 700);

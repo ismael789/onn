@@ -3,6 +3,7 @@
     "name": "onn Remote",
     "slug": "onn-remote",
     "version": "1.0.0",
+    "icon": "./assets/app-icon.png",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "splash": {
@@ -13,7 +14,8 @@
       "usesCleartextTraffic": true
     },
     "plugins": [
-      "expo-status-bar"
+      "expo-status-bar",
+      "./app.plugin.js"
     ]
   }
 }
