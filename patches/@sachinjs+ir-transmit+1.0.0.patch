@@ -1,0 +1,12 @@
+diff --git a/node_modules/@sachinjs/ir-transmit/android/src/main/java/expo/modules/irtransmit/IrTransmitModule.kt b/node_modules/@sachinjs/ir-transmit/android/src/main/java/expo/modules/irtransmit/IrTransmitModule.kt
+index 9e29c96..a21ccab 100644
+--- a/node_modules/@sachinjs/ir-transmit/android/src/main/java/expo/modules/irtransmit/IrTransmitModule.kt
++++ b/node_modules/@sachinjs/ir-transmit/android/src/main/java/expo/modules/irtransmit/IrTransmitModule.kt
+@@ -83,6 +83,6 @@
+     private fun getCarrierFrequencies(): List<Map<String, Int>> =
+         runCatching {
+-            irManager.carrierFrequencyRanges.map {
++            irManager.carrierFrequencies.map {
+                 mapOf("minFrequency" to it.minFrequency, "maxFrequency" to it.maxFrequency)
+             }
+         }.getOrElse { emptyList() }
