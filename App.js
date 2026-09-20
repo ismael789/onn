@@ -61,7 +61,7 @@ export default function App() {
   const [foundDevices, setFoundDevices] = useState([]);
   const [connected, setConnected] = useState(false);
   const [connectModalOpen, setConnectModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('mando'); // mando | canal | transmitir | ajustes
+  const [activeTab, setActiveTab] = useState('mando'); // mando (WiFi) | infrarrojo | canal | transmitir | ajustes
   const [mandoView, setMandoView] = useState('remote'); // remote | inputs
 
   useEffect(() => {
@@ -439,8 +439,9 @@ export default function App() {
         <ConnectModal />
 
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ConnectBar />
+          {activeTab !== 'infrarrojo' && <ConnectBar />}
           {activeTab === 'mando' && <MandoTab />}
+          {activeTab === 'infrarrojo' && <LuzInfrarojaScreen />}
           {activeTab === 'canal' && <CanalTab />}
           {activeTab === 'transmitir' && <TransmitirTab />}
           {activeTab === 'ajustes' && <AjustesTab />}
@@ -449,6 +450,7 @@ export default function App() {
         <View style={styles.tabBar}>
           {[
             ['mando', 'person', 'Mando'],
+            ['infrarrojo', 'flash', 'IR'],
             ['canal', 'grid', 'Canal'],
             ['transmitir', 'tv', 'Transmitir'],
             ['ajustes', 'settings-sharp', 'Ajustes'],

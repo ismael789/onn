@@ -25,6 +25,7 @@ import {
   Platform,
 } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { hasIrBlaster, transmit } from '@sachinjs/ir-transmit';
 
 // ─── Constantes de color (igual que App.js) ──────────────────────────────────
 const PURPLE      = '#8b5cf6';
@@ -33,17 +34,6 @@ const BG          = '#0f0f14';
 const PANEL       = '#1a1a22';
 const PANEL_2     = '#232330';
 const ORANGE      = '#f97316'; // color distintivo para el modo IR
-
-// ─── Carga segura del módulo nativo IR ───────────────────────────────────────
-// Si el módulo no está compilado (Expo Go) o el dispositivo no tiene el chip,
-// IRManager queda null y la UI mostrará el mensaje de no disponible.
-let IRManager = null;
-try {
-  // react-native-ir-manager: accede a ConsumerIRManager de Android
-  IRManager = require('react-native-ir-manager').default;
-} catch (_) {
-  IRManager = null;
-}
 
 // ─── Protocolo NEC → array de pulsos en microsegundos ────────────────────────
 // La mayoría de controles universales y Roku usan el protocolo NEC a 38 kHz.
@@ -105,24 +95,19 @@ const ROKU_NEC = {
 
 // ─── Función principal de envío IR ───────────────────────────────────────────
 async function sendIR(necKey) {
-  if (!IRManager) return { ok: false, reason: 'no_module' };
-
-  let emitter = false;
   try {
-    emitter = await IRManager.hasIrEmitter();
+    if (!hasIrBlaster()) return { ok: false, reason: 'no_hardware' };
   } catch (_) {
     return { ok: false, reason: 'no_hardware' };
   }
-
-  if (!emitter) return { ok: false, reason: 'no_hardware' };
 
   const necCode = ROKU_NEC[necKey];
   if (!necCode) return { ok: false, reason: 'no_code' };
 
   try {
     const pulses = necToPulses(necCode);
-    await IRManager.transmit(IR_FREQ, pulses);
-    return { ok: true };
+    const result = transmit(IR_FREQ, pulses);
+    return result.success ? { ok: true } : { ok: false, reason: result.message };
   } catch (e) {
     return { ok: false, reason: String(e) };
   }
@@ -154,13 +139,8 @@ export default function LuzInfrarojaScreen() {
         setHwStatus('unavailable');
         return;
       }
-      if (!IRManager) {
-        // Módulo nativo no compilado (Expo Go)
-        setHwStatus('unavailable');
-        return;
-      }
       try {
-        const has = await IRManager.hasIrEmitter();
+        const has = hasIrBlaster();
         setHwStatus(has ? 'ok' : 'unavailable');
       } catch (_) {
         setHwStatus('unavailable');
@@ -193,11 +173,9 @@ export default function LuzInfrarojaScreen() {
           Luz infrarroja no disponible
         </Text>
         <Text style={s.unavailableBody}>
-          {!IRManager
-            ? 'Este modo requiere un "Development Build" de la app (no funciona en Expo Go).\n\nPara activarlo: ejecuta `npx expo prebuild` y luego `eas build`.'
-            : Platform.OS !== 'android'
-              ? 'El control por infrarojo solo está disponible en Android con hardware IR físico.'
-              : 'Tu dispositivo Android no tiene emisor infrarrojo (IR blaster).\n\nUsa el control por WiFi, que ya funciona correctamente.'}
+          {Platform.OS !== 'android'
+            ? 'El control por infrarrojo solo está disponible en Android con hardware IR físico.'
+            : 'Tu dispositivo Android no tiene emisor infrarrojo (IR blaster).\n\nUsa el control por WiFi, que sigue disponible en la pestaña Mando.'}
         </Text>
         <View style={s.unavailableTip}>
           <Ionicons name="wifi" size={18} color={PURPLE} />

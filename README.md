@@ -36,6 +36,10 @@ Escanea el código QR con la app **Expo Go** en tu Android.
 - **Tab "Mando"**: cruz direccional, Home/Back/búsqueda,
   adelantar/retroceder/play, **volumen (mute, bajar, subir)**, y un
   botón para alternar a la vista de **entradas** (HDMI1-4, Tuner, AV).
+- **Tab "IR"**: control alternativo por infrarrojo. Solo se activa en Android
+  con emisor IR físico; si el teléfono no lo tiene, la app lo indica y el
+  control por WiFi sigue disponible en la pestaña Mando. Apunta el teléfono
+  hacia el frente de la TV para usarlo.
 - **Tab "Canal"**: subir/bajar canal y teclado numérico.
 - **Tab "Transmitir"**: placeholder — Cast/SSDP no está incluido en esta
   base, se puede agregar después.
