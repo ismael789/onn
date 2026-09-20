@@ -436,7 +436,7 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.safe}>
         <StatusBar barStyle="light-content" backgroundColor={BG} />
-        <ConnectModal />
+        {ConnectModal()}
 
         <ScrollView contentContainerStyle={styles.scroll}>
           {activeTab !== 'infrarrojo' && <ConnectBar />}
