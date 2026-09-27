@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
 
     steps:
       - name: Descargar código
@@ -28,12 +29,15 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Validar bundle Android de Expo
+        run: npx expo export --platform android --no-bytecode --output-dir .expo-check
+
       - name: Generar proyecto Android de Expo
         run: npx expo prebuild --platform android --no-install
 
       - name: Compilar APK de lanzamiento (Release)
         working-directory: android
-        run: ./gradlew assembleRelease
+        run: ./gradlew assembleRelease --no-daemon
 
       - name: Subir APK
         uses: actions/upload-artifact@v4

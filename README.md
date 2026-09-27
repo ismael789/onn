@@ -1,77 +1,104 @@
-# onn Remote — Control para onn. Roku TV
+# onn Remote — control Wi‑Fi e infrarrojo multi‑TV
 
-Control remoto funcional para onn. Roku TV, con el diseño de cruz morada
-tipo mando universal. Funciona por WiFi con el protocolo ECP de Roku
-(HTTP local, puerto 8060) — sin nube, sin API keys, sin Bluetooth (Roku no
-expone su protocolo BT a terceros).
+Aplicación Expo/React Native con una sola interfaz de mando y adaptadores separados
+para Roku, Samsung Tizen y LG webOS. El modo infrarrojo sigue siendo independiente y
+usa el catálogo local de marcas.
 
-## 1. Preparar la TV (una sola vez)
-
-En la onn. Roku TV:
-
-```
-Configuración > Sistema > Configuración avanzada del sistema > Control por apps móviles
-```
-
-Actívalo. Sin esto la TV ignora los comandos.
-
-El celular debe estar en la **misma red WiFi** que la TV.
-
-## 2. Instalar y correr
-
-Descomprime este zip, entra a la carpeta y corre:
+## Ejecutar
 
 ```bash
 npm install
 npx expo start
 ```
 
-Escanea el código QR con la app **Expo Go** en tu Android.
+El teléfono y la TV deben estar en la misma red local. Pueden usar bandas 2.4 GHz y
+5 GHz distintas siempre que el router permita comunicación entre ambas y no tenga
+aislamiento de clientes.
 
-## 3. Usar la app
+## Probar cada plataforma
 
-- Al abrir, toca la barra de arriba ("Toca para conectar...") para
-  buscar tu TV en la red automáticamente o escribir su IP a mano
-  (la IP también aparece en la TV: `Configuración > Red > Acerca de`).
-- **Tab "Mando"**: cruz direccional, Home/Back/búsqueda,
-  adelantar/retroceder/play, **volumen (mute, bajar, subir)**, y un
-  botón para alternar a la vista de **entradas** (HDMI1-4, Tuner, AV).
-- **Tab "IR"**: control alternativo por infrarrojo. Solo se activa en Android
-  con emisor IR físico; si el teléfono no lo tiene, la app lo indica y el
-  control por WiFi sigue disponible en la pestaña Mando. Apunta el teléfono
-  hacia el frente de la TV para usarlo.
-- **Tab "Canal"**: subir/bajar canal y teclado numérico.
-- **Tab "Transmitir"**: placeholder — Cast/SSDP no está incluido en esta
-  base, se puede agregar después.
-- **Tab "Ajustes"**: ver la TV conectada, reconectar u olvidar la IP
-  guardada.
+### Roku
 
-## Qué es "funcional" aquí
+1. En la TV activa `Configuración > Sistema > Configuración avanzada > Control por apps móviles`.
+2. Abre la barra `Toca para conectar...`.
+3. Usa la búsqueda automática o escribe la IP y selecciona `Roku`/`Automático`.
+4. Prueba Mando, entradas, canales, aplicaciones y accesos directos.
 
-Todo lo que aprietas manda de verdad un `POST` a
-`http://<ip-tv>:8060/keypress/<Tecla>`, que es el mismo comando que usa
-la app oficial de Roku. El volumen, el D-pad, home/back, play/pausa y los
-canales funcionan en cuanto conectes con la IP correcta y tengas
-"Control por apps móviles" activado.
+Roku usa ECP local en el puerto 8060. Se conservan `query/device-info`, `query/apps`,
+`query/icon`, `keypress`, `launch` y la sintonización de TV en vivo.
 
-## Limitación real de Roku
+### Samsung Tizen
 
-No se puede **encender** una TV apagada por WiFi (ECP), solo mandarla a
-standby. Para encender a distancia se necesitaría HDMI-CEC desde otro
-aparato.
+1. Enciende la TV y déjala conectada a la misma red.
+2. Busca automáticamente o selecciona `Samsung` e introduce su IP.
+3. Acepta `onn Remote` cuando la TV muestre la solicitud de autorización.
+4. Prueba dirección, OK, Home, Back, volumen, reproducción, canales y entradas.
 
-## Estructura del proyecto
+Samsung usa el WebSocket local del puerto 8001. El token se conserva cuando la TV lo
+devuelve. La consulta y lanzamiento de aplicaciones se mantienen deshabilitados porque
+el canal de control remoto disponible no ofrece una lista estable de apps para todos
+los modelos Tizen.
 
+### LG webOS
+
+1. Selecciona `LG` en el mismo modal de conexión.
+2. Escribe la IP de la TV; LG no se escanea automáticamente para evitar solicitudes
+   de emparejamiento y falsos positivos en toda la subred.
+3. Acepta el emparejamiento en la pantalla.
+4. Prueba navegación, volumen, reproducción, canales y aplicaciones.
+
+Los webOS que todavía exponen el WebSocket local del puerto 3000 pueden funcionar con
+esta implementación. Algunos modelos recientes requieren LG Connect SDK y un APK
+personalizado; esa integración nativa no funciona dentro de Expo Go. Canal directo,
+búsqueda y cambio directo de entrada se muestran deshabilitados en LG.
+
+### Infrarrojo
+
+1. Abre la pestaña `IR` y elige marca y modelo.
+2. Instala un APK personalizado en un Android con emisor IR físico.
+3. Apunta el teléfono al televisor.
+
+Expo Go permite ver y guardar el perfil, pero no contiene el módulo nativo que transmite
+IR. La preferencia y el nivel de vibración se comparten con el mando Wi‑Fi.
+
+## Capacidades por plataforma
+
+| Función | Roku | Samsung | LG webOS |
+|---|---:|---:|---:|
+| D-pad, Home y Back | Sí | Sí | Sí |
+| Volumen y mute | Sí | Sí | Sí |
+| Reproducción | Sí | Sí | Sí, según app |
+| Canal +/- | Sí | Sí | Sí |
+| Canal directo | Sí | No | No |
+| Entradas directas | Sí | Sí, según modelo | Pendiente |
+| Consultar/abrir apps | Sí | No | Sí, según versión webOS |
+| Iconos de apps | Sí | No | Cuando webOS devuelve URL |
+| Emparejamiento | No | Sí | Sí |
+
+Los botones sin capacidad declarada permanecen visibles pero deshabilitados.
+
+## Arquitectura
+
+```text
+App.js                         Interfaz y funciones genéricas
+tvAdapters/common.js           Capacidades y utilidades compartidas
+tvAdapters/index.js            Registro, detección y escaneo
+tvAdapters/roku.js             Roku ECP
+tvAdapters/samsung.js          Samsung Tizen WebSocket
+tvAdapters/lg.js               LG webOS WebSocket/SSAP
+luz_infraroja.js               Control IR independiente
+ir_tv_catalog.json             Perfiles IR locales
 ```
-onn-remote/
-├── App.js          ← toda la lógica y la interfaz
-├── app.json        ← configuración de Expo
-├── package.json    ← dependencias
-└── babel.config.js
+
+La TV guardada incluye `id`, `name`, `type/brand`, `ip`, `port`, `capabilities` y
+estado/token de autorización. Al iniciar se intenta reconectar; si una Roku o Samsung
+cambió de IP se vuelve a buscar por identificador. También se reintenta al regresar el
+Wi‑Fi.
+
+## Validar el bundle Android
+
+```bash
+npx expo export --platform android --no-bytecode --output-dir .expo-check
 ```
-# control
-# ismael789-control
-# onn
-# onn
-# onn
-# onn
+
+`.expo`, `.expo-check`, `node_modules` y los logs están excluidos mediante `.gitignore`.
