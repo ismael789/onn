@@ -1,4 +1,13 @@
-import { capabilities, fetchWithTimeout, unsupported } from './common';
+import {
+  capabilities,
+  connectionError,
+  CONNECTION_ERROR_CODES,
+  fetchWithTimeout,
+  unsupported,
+} from './common';
+import deviceMetadata from '../utils/deviceMetadata';
+
+const { decodeXml, parseRokuDeviceInfo } = deviceMetadata;
 
 export const type = 'roku';
 export const label = 'Roku TV';
@@ -10,27 +19,34 @@ export const rokuCapabilities = capabilities({
   appIcons: true,
 });
 
-function xmlText(xml, tag) {
-  return xml.match(new RegExp(`<${tag}>(.*?)</${tag}>`, 'i'))?.[1] || '';
+function ensureRokuResponse(response, action) {
+  if (response.ok) return;
+  if (response.status === 401 || response.status === 403) {
+    throw connectionError(
+      CONNECTION_ERROR_CODES.PERMISSION_DENIED,
+      `Roku rechazó ${action} (HTTP ${response.status}).`,
+    );
+  }
+  throw connectionError(
+    CONNECTION_ERROR_CODES.UNKNOWN,
+    `Roku devolvió HTTP ${response.status} al intentar ${action}.`,
+  );
 }
 
-function decodeXml(value) {
-  return value.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"').replace(/&apos;/g, "'");
-}
-
-export async function probe(ip) {
+export async function probe(ip, options = {}) {
   try {
-    const response = await fetchWithTimeout(`http://${ip}:${defaultPort}/query/device-info`, {}, 1500);
+    const response = await fetchWithTimeout(
+      `http://${ip}:${defaultPort}/query/device-info`,
+      {},
+      options.timeoutMs || 1500,
+    );
     if (!response.ok) return null;
     const xml = await response.text();
     if (!/<device-info>/i.test(xml)) return null;
-    const name = xmlText(xml, 'friendly-device-name') || xmlText(xml, 'user-device-name') || 'Roku TV';
+    const metadata = parseRokuDeviceInfo(xml, ip);
     return {
-      id: `roku:${xmlText(xml, 'device-id') || ip}`,
-      name: decodeXml(name),
-      model: decodeXml(xmlText(xml, 'model-name')),
-      type, brand: type, ip, port: defaultPort, capabilities: rokuCapabilities,
+      ...metadata,
+      type, os: 'Roku OS', ip, port: defaultPort, capabilities: rokuCapabilities,
       auth: { state: 'not_required' },
     };
   } catch (_) {
@@ -51,12 +67,12 @@ export async function sendKey(device, key) {
     `http://${device.ip}:${device.port || defaultPort}/keypress/${encodeURIComponent(key)}`,
     { method: 'POST' }, 1000,
   );
-  if (!response.ok) throw new Error(`La Roku rechazó ${key} (HTTP ${response.status}).`);
+  ensureRokuResponse(response, `enviar ${key}`);
 }
 
 export async function loadApps(device) {
   const response = await fetchWithTimeout(`http://${device.ip}:${device.port || defaultPort}/query/apps`, {}, 3000);
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  ensureRokuResponse(response, 'consultar las aplicaciones');
   const xml = await response.text();
   return Array.from(xml.matchAll(/<app\b([^>]*)>([\s\S]*?)<\/app>/gi))
     .map((match) => {
@@ -76,7 +92,7 @@ export async function launchApp(device, app) {
     `http://${device.ip}:${device.port || defaultPort}/launch/${encodeURIComponent(app.id)}`,
     { method: 'POST' }, 2500,
   );
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  ensureRokuResponse(response, `abrir ${app.name || app.id}`);
 }
 
 export async function tuneChannel(device, channel) {
@@ -84,8 +100,29 @@ export async function tuneChannel(device, channel) {
     `http://${device.ip}:${device.port || defaultPort}/launch/tvinput.dtv?ch=${encodeURIComponent(channel)}`,
     { method: 'POST' }, 2500,
   );
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  ensureRokuResponse(response, `cambiar al canal ${channel}`);
 }
 
-export const adapter = { type, label, probe, connect, disconnect, sendKey, loadApps, launchApp, tuneChannel, getAppIcon };
+export async function diagnose(device) {
+  const port = device.port || defaultPort;
+  const startedAt = Date.now();
+  const response = await fetchWithTimeout(`http://${device.ip}:${port}/query/device-info`, {}, 3000);
+  if (!response.ok) {
+    throw connectionError(CONNECTION_ERROR_CODES.PORT_BLOCKED, `Roku respondió HTTP ${response.status} en ${port}.`);
+  }
+  const xml = await response.text();
+  if (!/<device-info>/i.test(xml)) {
+    throw connectionError(CONNECTION_ERROR_CODES.TV_OFFLINE, 'La respuesta recibida no pertenece a una Roku TV.');
+  }
+  return {
+    device: { ...device, port },
+    responding: true,
+    latencyMs: Date.now() - startedAt,
+    port,
+    transport: 'HTTP ECP',
+    websocketState: 'No aplica',
+  };
+}
+
+export const adapter = { type, label, probe, connect, disconnect, sendKey, loadApps, launchApp, tuneChannel, getAppIcon, diagnose };
 export default adapter;

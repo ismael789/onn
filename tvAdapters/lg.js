@@ -39,6 +39,10 @@ function registerPayload(device) {
 
 function request(session, uri, payload = {}) {
   return new Promise((resolve, reject) => {
+    if (session.socket?.readyState !== WebSocket.OPEN || !session.registered) {
+      reject(new Error('La conexión con LG webOS está cerrada.'));
+      return;
+    }
     const id = `request_${session.nextId++}`;
     const timer = setTimeout(() => {
       session.pending.delete(id);
@@ -52,32 +56,54 @@ function request(session, uri, payload = {}) {
 export function connect(device, handlers = {}) {
   const active = sessions.get(device.ip);
   if (active?.socket?.readyState === WebSocket.OPEN && active.registered) return Promise.resolve(device);
+  if (active?.connecting) return active.connecting;
   handlers.onPairingState?.('waiting');
-  return new Promise((resolve, reject) => {
+  let session;
+  const connection = new Promise((resolve, reject) => {
     const socket = new WebSocket(`ws://${device.ip}:${device.port || defaultPort}`);
-    const session = { socket, pending: new Map(), nextId: 1, registered: false, pointer: null };
+    session = { socket, pending: new Map(), nextId: 1, registered: false, pointer: null, connecting: null };
     sessions.set(device.ip, session);
+    let settled = false;
+    const rejectOnce = (error) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      session.connecting = null;
+      if (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING) socket.close();
+      reject(error);
+    };
     const timer = setTimeout(() => {
-      socket.close();
-      reject(new Error('LG no respondió. Algunos modelos nuevos requieren Connect SDK en el APK.'));
+      rejectOnce(new Error('LG no respondió. Algunos modelos nuevos requieren Connect SDK en el APK.'));
     }, 30000);
     socket.onopen = () => socket.send(JSON.stringify(registerPayload(device)));
-    socket.onerror = () => { clearTimeout(timer); reject(new Error('No se pudo conectar con LG webOS por el puerto 3000.')); };
+    socket.onerror = () => rejectOnce(new Error('No se pudo conectar con LG webOS por el puerto 3000.'));
+    socket.onclose = () => {
+      session.pointer?.close();
+      session.pending.forEach((pending) => {
+        clearTimeout(pending.timer);
+        pending.reject(new Error('LG cerró la conexión.'));
+      });
+      session.pending.clear();
+      if (sessions.get(device.ip) === session) sessions.delete(device.ip);
+      rejectOnce(new Error('LG cerró la conexión.'));
+    };
     socket.onmessage = (event) => {
       try {
         const message = JSON.parse(event.data);
         if (message.type === 'registered') {
+          if (settled) return;
+          settled = true;
           clearTimeout(timer);
           session.registered = true;
+          session.connecting = null;
           const token = message.payload?.['client-key'] || device.auth?.token || null;
-          const connected = { ...device, id: device.id || `lg:${device.ip}`, name: device.name || 'LG webOS TV', type, brand: type, port: defaultPort, capabilities: lgCapabilities, auth: { state: 'authorized', token } };
+          const connected = { ...device, id: device.id || `lg:${device.ip}`, name: device.name || 'LG webOS TV', type, brand: 'LG', os: 'webOS', port: defaultPort, capabilities: lgCapabilities, auth: { state: 'authorized', token } };
           handlers.onPairingState?.('authorized');
           handlers.onAuth?.(connected.auth);
           resolve(connected);
         } else if (message.type === 'error' && message.id === 'register_0') {
-          clearTimeout(timer);
           handlers.onPairingState?.('denied');
-          reject(new Error(message.error || 'La TV LG rechazó el emparejamiento.'));
+          rejectOnce(new Error(message.error || 'La TV LG rechazó el emparejamiento.'));
         } else if (message.id && session.pending.has(message.id)) {
           const pending = session.pending.get(message.id);
           clearTimeout(pending.timer);
@@ -88,6 +114,8 @@ export function connect(device, handlers = {}) {
       } catch (_) {}
     };
   });
+  session.connecting = connection;
+  return connection;
 }
 
 export function disconnect(device) {
@@ -161,5 +189,20 @@ export async function launchApp(device, app, handlers) {
 export async function tuneChannel() { unsupported('Canal directo'); }
 export function getAppIcon(_device, _id, app) { return app?.iconUri || null; }
 
-export const adapter = { type, label, probe, connect, disconnect, sendKey, loadApps, launchApp, tuneChannel, getAppIcon };
+export async function diagnose(device, handlers = {}) {
+  const startedAt = Date.now();
+  const connected = await connect(device, handlers);
+  const session = await getSession(connected, handlers);
+  await request(session, 'ssap://audio/getStatus');
+  return {
+    device: connected,
+    responding: true,
+    latencyMs: Date.now() - startedAt,
+    port: connected.port || defaultPort,
+    transport: 'WebSocket SSAP',
+    websocketState: session.socket?.readyState === WebSocket.OPEN ? 'Conectado' : 'Desconectado',
+  };
+}
+
+export const adapter = { type, label, probe, connect, disconnect, sendKey, loadApps, launchApp, tuneChannel, getAppIcon, diagnose };
 export default adapter;

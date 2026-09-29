@@ -5,6 +5,7 @@
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
+    "test": "node --test --experimental-test-isolation=none tests/*.test.js",
     "postinstall": "patch-package"
   },
   "dependencies": {
@@ -12,8 +13,14 @@
     "@react-native-async-storage/async-storage": "2.2.0",
     "@sachinjs/ir-transmit": "^1.0.0",
     "babel-preset-expo": "~57.0.0",
-    "expo": "^57.0.24",
+    "expo": "~57.0.25",
+    "expo-constants": "~57.0.19",
+    "expo-device": "~57.0.2",
+    "expo-font": "~57.0.4",
+    "expo-intent-launcher": "~57.0.1",
     "expo-network": "~57.0.2",
+    "expo-notifications": "~57.0.21",
+    "expo-splash-screen": "~57.0.9",
     "expo-status-bar": "~57.0.1",
     "react": "19.2.3",
     "react-native": "0.86.3",

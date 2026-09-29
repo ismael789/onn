@@ -6,17 +6,31 @@
     "icon": "./assets/app-icon.png",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
-    "splash": {
-      "backgroundColor": "#0f0f14"
-    },
     "android": {
       "package": "com.onnremote.app",
-      "permissions": ["VIBRATE"],
-      "usesCleartextTraffic": true
+      "permissions": [
+        "VIBRATE"
+      ]
     },
     "plugins": [
       "expo-status-bar",
-      "./app.plugin.js"
+      [
+        "expo-notifications",
+        {
+          "color": "#8b5cf6",
+          "defaultChannel": "tv-status"
+        }
+      ],
+      "./app.plugin.js",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/app-icon.png",
+          "imageWidth": 180,
+          "backgroundColor": "#0f0f14"
+        }
+      ]
     ]
   }
 }
