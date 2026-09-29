@@ -5,6 +5,7 @@ const {
   createQueueState,
   enableCommandQueue,
   enqueueCommand,
+  executeWithTransientRetry,
   getSamsungPortOrder,
   normalizeTemplateType,
   orderIpCandidates,
@@ -131,6 +132,61 @@ test('la cola ejecuta comandos en orden sin solaparlos', async () => {
   assert.deepEqual(order, [1, 2, 3]);
   assert.deepEqual(results, [1, 2, 3]);
   assert.equal(maximumActive, 1);
+});
+
+test('la cola respeta la pausa individual de cada comando', async () => {
+  const state = createQueueState();
+  const pauses = [];
+  const wait = async (milliseconds) => pauses.push(milliseconds);
+  const execute = async (operation) => operation();
+  const first = enqueueCommand(state, async () => 1, execute, { delayMs: 125, wait });
+  const second = enqueueCommand(state, async () => 2, execute, { delayMs: 65, wait });
+  assert.deepEqual(await Promise.all([first, second]), [1, 2]);
+  assert.deepEqual(pauses, [125]);
+});
+
+test('cuarenta pulsaciones rápidas se conservan en el mismo orden', async () => {
+  const state = createQueueState();
+  const received = [];
+  const commands = Array.from({ length: 40 }, (_, index) =>
+    enqueueCommand(
+      state,
+      async () => { received.push(index); return index; },
+      async (operation) => operation(),
+      { maxSize: 40, delayMs: 0 },
+    ));
+  assert.deepEqual(await Promise.all(commands), Array.from({ length: 40 }, (_, index) => index));
+  assert.deepEqual(received, Array.from({ length: 40 }, (_, index) => index));
+});
+
+test('un fallo transitorio reintenta una vez antes de reconectar', async () => {
+  let attempts = 0;
+  let retries = 0;
+  const result = await executeWithTransientRetry(async () => {
+    attempts += 1;
+    if (attempts === 1) throw Object.assign(new Error('Network request failed'), { code: 'PORT_BLOCKED' });
+    return 'enviado';
+  }, {
+    shouldRetry: (error) => error.code === 'PORT_BLOCKED',
+    delayMs: 140,
+    wait: async (milliseconds) => assert.equal(milliseconds, 140),
+    onRetry: () => { retries += 1; },
+  });
+  assert.equal(result, 'enviado');
+  assert.equal(attempts, 2);
+  assert.equal(retries, 1);
+});
+
+test('un error no recuperable no reintenta el comando', async () => {
+  let attempts = 0;
+  await assert.rejects(
+    executeWithTransientRetry(async () => {
+      attempts += 1;
+      throw Object.assign(new Error('permiso rechazado'), { code: 'PERMISSION_DENIED' });
+    }, { shouldRetry: (error) => error.code !== 'PERMISSION_DENIED', delayMs: 0 }),
+    /permiso rechazado/,
+  );
+  assert.equal(attempts, 1);
 });
 
 test('una falla rechaza lo pendiente y evita una cadena de reconexiones', async () => {

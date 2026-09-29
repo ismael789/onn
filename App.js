@@ -52,6 +52,7 @@ const {
   createQueueState,
   enableCommandQueue,
   enqueueCommand,
+  executeWithTransientRetry,
   normalizeTemplateType,
   sanitizeShortcutPreferences,
 } = remoteStability;
@@ -69,7 +70,8 @@ const PURPLE_DARK = '#6d28d9';
 const BG = '#0f0f14';
 const PANEL = '#1a1a22';
 const PANEL_2 = '#232330';
-const MAX_COMMAND_QUEUE_SIZE = 24;
+const MAX_COMMAND_QUEUE_SIZE = 40;
+const TRANSIENT_COMMAND_RETRY_DELAY_MS = 140;
 const TV_TYPE_LABELS = {
   roku: 'Roku OS', samsung: 'Samsung Tizen', lg: 'LG webOS', sony: 'Sony Bravia',
   androidtv: 'Android/Google TV', firetv: 'Fire TV', vidaa: 'VIDAA',
@@ -658,12 +660,29 @@ export default function App() {
     }
   };
 
-  const executeWithReconnect = useCallback(async (operation) => {
+  const executeWithReconnect = useCallback(async (operation, context = {}) => {
     const device = connectedDeviceRef.current;
     if (!device) throw new Error('No hay una TV conectada.');
 
     try {
-      return await operation(device);
+      return await executeWithTransientRetry(
+        () => operation(device),
+        {
+          shouldRetry: isRetryableConnectionError,
+          delayMs: TRANSIENT_COMMAND_RETRY_DELAY_MS,
+          onRetry: (error) => {
+            const normalized = normalizeConnectionError(error);
+            console.warn('Reintentando comando tras un fallo transitorio:', {
+              type: device.type,
+              ip: device.ip,
+              command: context,
+              code: normalized.code,
+              technicalMessage: normalized.technicalMessage,
+              queuedCommands: commandQueueStateRef.current.items.length,
+            });
+          },
+        },
+      );
     } catch (firstError) {
       if (!isRetryableConnectionError(firstError)) throw firstError;
       if (!commandReconnectEnabledRef.current) throw firstError;
@@ -704,12 +723,24 @@ export default function App() {
     }
   }, [connectDevice]);
 
-  const enqueueTvCommand = useCallback((operation) => enqueueCommand(
+  const enqueueTvCommand = useCallback((operation, options = {}) => enqueueCommand(
     commandQueueStateRef.current,
     operation,
     executeWithReconnect,
-    { maxSize: MAX_COMMAND_QUEUE_SIZE, delayMs: 65 },
+    {
+      maxSize: MAX_COMMAND_QUEUE_SIZE,
+      delayMs: options.delayMs ?? 90,
+      context: options.context,
+    },
   ), [executeWithReconnect]);
+
+  const commandDelayForKey = (deviceType, key) => {
+    if (deviceType === 'samsung') return 65;
+    if (deviceType === 'lg') return 110;
+    if (['VolumeUp', 'VolumeDown', 'VolumeMute', 'ChannelUp', 'ChannelDown'].includes(key)) return 125;
+    if (['Up', 'Down', 'Left', 'Right', 'Select', 'Back', 'Play', 'Rev', 'Fwd'].includes(key)) return 90;
+    return 110;
+  };
 
   const loadTvApps = useCallback(async () => {
     const device = connectedDeviceRef.current;
@@ -896,8 +927,13 @@ export default function App() {
     }
     if (!canSendKey(key)) return;
     try {
-      await enqueueTvCommand((activeDevice) =>
-        getAdapter(activeDevice.type).sendKey(activeDevice, key, { onPairingState: setPairingState })
+      await enqueueTvCommand(
+        (activeDevice) =>
+          getAdapter(activeDevice.type).sendKey(activeDevice, key, { onPairingState: setPairingState }),
+        {
+          delayMs: commandDelayForKey(connectedDevice.type, key),
+          context: { kind: 'key', key },
+        },
       );
     } catch (error) {
       if (!commandReconnectEnabledRef.current) return;
@@ -915,8 +951,13 @@ export default function App() {
     if (!tvCapabilities.directChannel) return;
 
     try {
-      await enqueueTvCommand((activeDevice) =>
-        getAdapter(activeDevice.type).tuneChannel(activeDevice, channelNumber, { onPairingState: setPairingState })
+      await enqueueTvCommand(
+        (activeDevice) =>
+          getAdapter(activeDevice.type).tuneChannel(activeDevice, channelNumber, { onPairingState: setPairingState }),
+        {
+          delayMs: 140,
+          context: { kind: 'channel', channel: channelNumber },
+        },
       );
     } catch (error) {
       if (!commandReconnectEnabledRef.current) return;

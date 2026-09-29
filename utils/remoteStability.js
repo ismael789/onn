@@ -69,7 +69,7 @@ async function processCommandQueue(state, execute, options = {}) {
     while (state.enabled && state.items.length > 0) {
       const command = state.items.shift();
       try {
-        command.resolve(await execute(command.operation));
+        command.resolve(await execute(command.operation, command.context));
       } catch (error) {
         command.reject(error);
         // Una sola falla ya incluye reconexión/reenvío. Rechazar lo pendiente
@@ -77,7 +77,8 @@ async function processCommandQueue(state, execute, options = {}) {
         state.items.splice(0).forEach((pending) => pending.reject(error));
         break;
       }
-      if (state.items.length > 0 && delayMs > 0) await wait(delayMs);
+      const commandDelayMs = command.delayMs ?? delayMs;
+      if (state.items.length > 0 && commandDelayMs > 0) await wait(commandDelayMs);
     }
   } finally {
     state.processing = false;
@@ -93,10 +94,29 @@ function enqueueCommand(state, operation, execute, options = {}) {
     return Promise.reject(error);
   }
   const promise = new Promise((resolve, reject) => {
-    state.items.push({ operation, resolve, reject });
+    state.items.push({
+      operation,
+      resolve,
+      reject,
+      context: options.context,
+      delayMs: options.delayMs,
+    });
   });
   processCommandQueue(state, execute, options);
   return promise;
+}
+
+async function executeWithTransientRetry(operation, options = {}) {
+  const shouldRetry = options.shouldRetry || (() => false);
+  const wait = options.wait || ((milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds)));
+  try {
+    return await operation();
+  } catch (error) {
+    if (!shouldRetry(error)) throw error;
+    options.onRetry?.(error);
+    await wait(options.delayMs ?? 140);
+    return operation();
+  }
 }
 
 module.exports = {
@@ -104,6 +124,7 @@ module.exports = {
   createQueueState,
   enableCommandQueue,
   enqueueCommand,
+  executeWithTransientRetry,
   getSamsungPortOrder,
   orderIpCandidates,
   normalizeTemplateType,

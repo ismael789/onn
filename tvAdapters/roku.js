@@ -65,7 +65,7 @@ export function disconnect() {}
 export async function sendKey(device, key) {
   const response = await fetchWithTimeout(
     `http://${device.ip}:${device.port || defaultPort}/keypress/${encodeURIComponent(key)}`,
-    { method: 'POST' }, 1000,
+    { method: 'POST' }, 1800,
   );
   ensureRokuResponse(response, `enviar ${key}`);
 }
